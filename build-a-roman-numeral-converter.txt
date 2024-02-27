@@ -1,0 +1,70 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roman Numeral Converter</title>
+</head>
+<body>
+  <input type="number" id="number">
+  <button id="convert-btn">Convert</button>
+  <div id="output"></div>
+  <script src="./script.js"></script>
+</body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+document.getElementById('convert-btn').addEventListener('click', function () {
+  const numberInput = document.getElementById('number').value;
+  const outputDiv = document.getElementById('output');
+  let romanNumeral = '';
+
+  if (numberInput === '') {
+    outputDiv.textContent = 'Please enter a valid number';
+    return;
+  }
+  let number = parseInt(numberInput);
+  if (number <= 0) {
+    outputDiv.textContent = 'Please enter a number greater than or equal to 1';
+    return;
+  } else if (number >= 4000) {
+    outputDiv.textContent = 'Please enter a number less than or equal to 3999';
+    return;
+  }
+  const romanNumerals = [
+    { value: 1000, numeral: 'M' },
+    { value: 900, numeral: 'CM' },
+    { value: 500, numeral: 'D' },
+    { value: 400, numeral: 'CD' },
+    { value: 100, numeral: 'C' },
+    { value: 90, numeral: 'XC' },
+    { value: 50, numeral: 'L' },
+    { value: 40, numeral: 'XL' },
+    { value: 10, numeral: 'X' },
+    { value: 9, numeral: 'IX' },
+    { value: 5, numeral: 'V' },
+    { value: 4, numeral: 'IV' },
+    { value: 1, numeral: 'I' }
+  ];
+  for (let i = 0; i < romanNumerals.length; i++) {
+    while (number >= romanNumerals[i].value) {
+      romanNumeral += romanNumerals[i].numeral;
+      number -= romanNumerals[i].value;
+    }
+  }
+  outputDiv.textContent = romanNumeral;
+});
+
+** end of undefined **
+
